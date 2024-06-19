@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+    <title>Sreeman Reddy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <meta name="title" content="zenly">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+    <meta name="description" content="2014-2023 | au revoir. bisous">
+    <meta property="og:title" name="og:title" content="zenly">
+    <meta property="og:description" name="og:description" content="2014-2023 | au revoir. bisous">
+    <meta property="twitter:title" name="twitter:title" content="zenly">
+    <meta property="twitter:description" name="twitter:description" content="2014-2023 | au revoir. bisous">
+    <link rel="icon" href="images/appicon.png">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Space+Mono&display=swap');
+    </style>
+  </head>
+
+  <body onclick="screenClick();">
+    <div>
+      <div style="display: flex; flex-direction: column; justify-content: center">
+        <div class="pic">
+          <a href="./404.html"><img src="./dp.jpg" class="center"></a>
+        </div>
+        <p style="text-align: center; font-size: 16px">
+          <span style="color: white; font-family: 'Space Mono', monospace">@sreeman<img src="./verified.png"></span>
+        </p>
+        <p style="text-align: center; font-size: 16px">
+          <span style="color: white; font-family: 'Space Mono', monospace">ESC FROM REALITY <span style="color: red; text-shadow: 0 0 10px rgb(212, 67, 23), 0 0 55px rgb(212, 67, 23);">❗️</span></span>
+        </p>
+        <p style="text-align: center">
+          <a href="https://twitter.com/itzmr_s/" target="_blank" style="color: rgb(31, 128, 231); text-shadow: 0 0 10px rgb(31, 128, 231), 0 0 55px rgb(31, 128, 231); font-family: 'Space Mono', monospace">/TW</a> &nbsp;&nbsp;<a href="https://instagram.com/sreeman.exe/" target="_blank" style="color: rgb(119, 44, 215); text-shadow: 0 0 10px rgb(119, 44, 215), 0 0 55px rgb(119, 44, 215); font-family: 'Space Mono', monospace">/IG</a> &nbsp;&nbsp;<a href="https://youtube.com/@SREEMAN_FF/" target="_blank" style="color: rgb(212, 67, 23); text-shadow: 0 0 10px rgb(212, 67, 23), 0 0 55px rgb(212, 67, 23); font-family: 'Space Mono', monospace">/YT</a> &nbsp;&nbsp;<a href="https://github.com/sremannn/" target="_blank" style="color: white; text-shadow: 0 0 10px rgb(196, 191, 189), 0 0 55px rgb(196, 191, 189); font-family: 'Space Mono', monospace">/GH</a>
+        </p>
+		<p style="text-align: center; font-size: 14px">
+			<span style="color: white; font-family: 'Space Mono', monospace">:: FOR BUSINESS ::</span>
+		</p>
+        <p style="text-align: center">
+          💌: <a href="mailto:sreemanthink@gmail.com" target="_blank" style="color: white; font-family: 'Space Mono', monospace">sreemanthink@gmail.com</a>
+        </p>
+      </div>
+    </div>
+
+    <audio id="backgroundMusic" src="./audio.mp3" loop="" playsinline="" style="display: none"></audio>
+<div id="wakeButton" class="wakeButton">
+    <a id="sleepingO" href="#">
+        <!--<iframe src="o/o.php?r=8&w=1.5&c=80-80-80"></iframe>-->
+    </a>
+</div>
+
+<div id="audioButton"><a id="audioButtonA" href="#" onclick="toggleAudio(); return false;"><img id="soundImage" src="https://mind.app/sound_paused.gif" width="30" height="30"></a></div>
+	
+<script>
+	
+	var screenWasClicked = false;
+	var backgroundMusic = document.getElementById("backgroundMusic");
+	var firstTap = true;
+		
+	function toggleAudio(){
+		if(!backgroundMusic.paused){
+			pauseAudio();
+			userAudioSetting = 0;
+		} else {
+			playAudio();
+			screenWasClicked = true;
+			document.getElementById('audioButtonA').style.animation = 'none';
+			userAudioSetting = 1;
+		}
+	}
+
+	function playAudio(){
+		//console.log("Play audio");
+		backgroundMusic.play();
+		document.getElementById('soundImage').src = "https://mind.app/sound_200.gif";
+	}
+
+	function pauseAudio(){
+		//console.log("Pause audio");
+		backgroundMusic.pause();
+		document.getElementById('soundImage').src = "https://mind.app/sound_paused.gif";
+	}
+	
+	function screenClick(){
+		
+		//console.log('Screen clicked or tapped');
+		
+		if(firstTap==true){
+			firstTap = false;
+		}
+			
+		if(screenWasClicked==true){
+			return;
+		}
+		toggleAudio();
+	}
+		
+	// Visibility (for music pausing)
+	var tabVisibility = "hidden";
+	var userAudioSetting = 1;
+
+	function visibilitySetup(){
+
+		// Standards:
+		if (tabVisibility in document){
+			document.addEventListener("visibilitychange", onchange);
+		} else if ((tabVisibility = "mozHidden") in document){
+			document.addEventListener("mozvisibilitychange", onchange);
+		} else if ((tabVisibility = "webkitHidden") in document){
+			document.addEventListener("webkitvisibilitychange", onchange);
+		} else if ((tabVisibility = "msHidden") in document){
+			document.addEventListener("msvisibilitychange", onchange);
+		// IE 9 and lower:
+		} else if ("onfocusin" in document){
+			document.onfocusin = document.onfocusout = onchange;
+		// All others:
+		} else{
+			window.onpageshow = window.onpagehide
+			= window.onfocus = window.onblur = onchange;
+		} 
+	}
+
+	function onchange(evt) {
+		var v = "visible", h = "hidden",
+		evtMap = {
+		  focus:v, focusin:v, pageshow:v, blur:h, focusout:h, pagehide:h
+		};
+
+		evt = evt || window.event;
+		if (evt.type in evtMap){
+		  document.body.className = evtMap[evt.type];
+		} else {
+		  document.body.className = this[tabVisibility] ? "hidden" : "visible";
+		}
+		//console.log('Is visible: '+document.body.className);
+
+		if(document.body.className=='visible'){
+			if(firstTap==false){
+				if(userAudioSetting==true){
+				   backgroundMusic.play();
+				}
+			}
+		} else {
+
+			backgroundMusic.pause();
+		}
+	}
+		
+	function fadeIn(element, callback) {
+		var op = 0.1;  // initial opacity
+		element.style.display = 'block';
+		var timer = setInterval(function () {
+			if (op >= 1.0){
+				clearInterval(timer);
+				callback();
+			}
+			element.style.opacity = op;
+			element.style.filter = 'alpha(opacity=' + op * 100  + ")";
+			op += op * 0.1;
+		}, 10);
+	}
+
+	function fadeOut(element, callback) {
+		var op = 1;  // initial opacity
+		var timer = setInterval(function () {
+			if (op <= 0.1){
+				clearInterval(timer);
+				element.style.display = 'none';
+				callback();
+			}
+			element.style.opacity = op;
+			element.style.filter = 'alpha(opacity=' + op * 100  + ")";
+			op -= op * 0.1;
+		}, 10);
+	}
+</script>
+
+</body>
+</html>
