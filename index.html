@@ -19,14 +19,14 @@
     </style>
   </head>
 
-  <body onclick="screenClick();">
+  <body>
     <div>
       <div style="display: flex; flex-direction: column; justify-content: center">
         <div class="pic">
           <a href="./404.html"><img src="./dp.jpg" class="center"></a>
         </div>
         <p style="text-align: center; font-size: 16px">
-          <span style="color: white; font-family: 'Space Mono', monospace">@sreeman<img src="./verified.png"></span>
+          <span style="color: white; font-family: 'Space Mono', monospace">@sreeman</span>
         </p>
         <p style="text-align: center; font-size: 16px">
           <span style="color: white; font-family: 'Space Mono', monospace">ESC FROM REALITY <span style="color: red; text-shadow: 0 0 10px rgb(212, 67, 23), 0 0 55px rgb(212, 67, 23);">❗️</span></span>
@@ -42,139 +42,6 @@
         </p>
       </div>
     </div>
-
-    <audio id="backgroundMusic" src="./audio.mp3" loop="" playsinline="" style="display: none"></audio>
-<div id="wakeButton" class="wakeButton">
-    <a id="sleepingO" href="#">
-        <!--<iframe src="o/o.php?r=8&w=1.5&c=80-80-80"></iframe>-->
-    </a>
-</div>
-
-<div id="audioButton"><a id="audioButtonA" href="#" onclick="toggleAudio(); return false;"><img id="soundImage" src="https://mind.app/sound_paused.gif" width="30" height="30"></a></div>
-	
-<script>
-	
-	var screenWasClicked = false;
-	var backgroundMusic = document.getElementById("backgroundMusic");
-	var firstTap = true;
-		
-	function toggleAudio(){
-		if(!backgroundMusic.paused){
-			pauseAudio();
-			userAudioSetting = 0;
-		} else {
-			playAudio();
-			screenWasClicked = true;
-			document.getElementById('audioButtonA').style.animation = 'none';
-			userAudioSetting = 1;
-		}
-	}
-
-	function playAudio(){
-		//console.log("Play audio");
-		backgroundMusic.play();
-		document.getElementById('soundImage').src = "https://mind.app/sound_200.gif";
-	}
-
-	function pauseAudio(){
-		//console.log("Pause audio");
-		backgroundMusic.pause();
-		document.getElementById('soundImage').src = "https://mind.app/sound_paused.gif";
-	}
-	
-	function screenClick(){
-		
-		//console.log('Screen clicked or tapped');
-		
-		if(firstTap==true){
-			firstTap = false;
-		}
-			
-		if(screenWasClicked==true){
-			return;
-		}
-		toggleAudio();
-	}
-		
-	// Visibility (for music pausing)
-	var tabVisibility = "hidden";
-	var userAudioSetting = 1;
-
-	function visibilitySetup(){
-
-		// Standards:
-		if (tabVisibility in document){
-			document.addEventListener("visibilitychange", onchange);
-		} else if ((tabVisibility = "mozHidden") in document){
-			document.addEventListener("mozvisibilitychange", onchange);
-		} else if ((tabVisibility = "webkitHidden") in document){
-			document.addEventListener("webkitvisibilitychange", onchange);
-		} else if ((tabVisibility = "msHidden") in document){
-			document.addEventListener("msvisibilitychange", onchange);
-		// IE 9 and lower:
-		} else if ("onfocusin" in document){
-			document.onfocusin = document.onfocusout = onchange;
-		// All others:
-		} else{
-			window.onpageshow = window.onpagehide
-			= window.onfocus = window.onblur = onchange;
-		} 
-	}
-
-	function onchange(evt) {
-		var v = "visible", h = "hidden",
-		evtMap = {
-		  focus:v, focusin:v, pageshow:v, blur:h, focusout:h, pagehide:h
-		};
-
-		evt = evt || window.event;
-		if (evt.type in evtMap){
-		  document.body.className = evtMap[evt.type];
-		} else {
-		  document.body.className = this[tabVisibility] ? "hidden" : "visible";
-		}
-		//console.log('Is visible: '+document.body.className);
-
-		if(document.body.className=='visible'){
-			if(firstTap==false){
-				if(userAudioSetting==true){
-				   backgroundMusic.play();
-				}
-			}
-		} else {
-
-			backgroundMusic.pause();
-		}
-	}
-		
-	function fadeIn(element, callback) {
-		var op = 0.1;  // initial opacity
-		element.style.display = 'block';
-		var timer = setInterval(function () {
-			if (op >= 1.0){
-				clearInterval(timer);
-				callback();
-			}
-			element.style.opacity = op;
-			element.style.filter = 'alpha(opacity=' + op * 100  + ")";
-			op += op * 0.1;
-		}, 10);
-	}
-
-	function fadeOut(element, callback) {
-		var op = 1;  // initial opacity
-		var timer = setInterval(function () {
-			if (op <= 0.1){
-				clearInterval(timer);
-				element.style.display = 'none';
-				callback();
-			}
-			element.style.opacity = op;
-			element.style.filter = 'alpha(opacity=' + op * 100  + ")";
-			op -= op * 0.1;
-		}, 10);
-	}
-</script>
 
 </body>
 </html>
